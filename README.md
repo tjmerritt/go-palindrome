@@ -24,7 +24,7 @@ func IsPalindromeString(num int) bool {
 	first := 0
 	last := len(str) - 1
 
-	for b < e {
+	for first < last {
 		// if digits do not match, fail
 		if str[first] != str[last] {
 			return false
