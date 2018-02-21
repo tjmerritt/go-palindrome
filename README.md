@@ -1,4 +1,8 @@
-# go-palindrome
+
+# go-palindrome #
+
+[![GoDoc](https://godoc.org/github.com/tjmerritt/go-palindrom?status.svg)](https://godoc.org/github.com/tjmerritt/go-palindrome)
+
 While interviewing prospective candidates at three different companies, I have used the following interview question.
 
 Write a function that takes an integer parameter and returns true if it is a palindrome and false otherwise.
