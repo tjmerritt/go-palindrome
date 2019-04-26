@@ -28,9 +28,9 @@ func Test_IsPalindromeInt(t *testing.T) {
 
 		if ok != tc.palindrome {
 			if tc.palindrome {
-				t.Error("IsPalindromeInt %d is a palindrome, but was not identified as one", tc.n)
+				t.Errorf("IsPalindromeInt %d is a palindrome, but was not identified as one", tc.n)
 			} else {
-				t.Error("IsPalindromeInt %d is not a palindrome, but was identified as one", tc.n)
+				t.Errorf("IsPalindromeInt %d is not a palindrome, but was identified as one", tc.n)
 			}
 		}
 	}

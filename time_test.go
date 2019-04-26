@@ -32,7 +32,8 @@ var timeGenTests []TestInfo = []TestInfo{
 	TestInfo{1, 100000000000000, 19999998, 5 * time.Second},
 }
 
-func Test_TimeLinearInt(t *testing.T) {
+func Benchmark_TimeLinearInt(t *testing.B) {
+        st := time.Now()
 	for _, ti := range timeTests {
 		c, x := TimeLinearInt(ti.min, ti.max)
 
@@ -40,9 +41,10 @@ func Test_TimeLinearInt(t *testing.T) {
 			t.Error(fmt.Sprintf("TimeLinearInt error, %d(%d) %v(%v)", c, ti.count, x, ti.maxtime))
 		}
 	}
+        fmt.Printf("TimeLinearInt: %v\n", time.Now().Sub(st))
 }
 
-func Test_TimeLinearStr(t *testing.T) {
+func Benchmark_TimeLinearStr(t *testing.B) {
 	for _, ti := range timeTests {
 		c, x := TimeLinearStr(ti.min, ti.max)
 
@@ -52,7 +54,7 @@ func Test_TimeLinearStr(t *testing.T) {
 	}
 }
 
-func Test_TimeNextGenerator(t *testing.T) {
+func Benchmark_TimeNextGenerator(t *testing.B) {
 	for _, ti := range timeTests {
 		c, x := TimeNextGenerator(ti.min, ti.max)
 
@@ -69,7 +71,7 @@ func Test_TimeNextGenerator(t *testing.T) {
 	}
 }
 
-func Test_TimePrevGenerator(t *testing.T) {
+func Benchmark_TimePrevGenerator(t *testing.B) {
 	for _, ti := range timeTests {
 		c, x := TimePrevGenerator(ti.min, ti.max)
 
@@ -85,3 +87,27 @@ func Test_TimePrevGenerator(t *testing.T) {
 		}
 	}
 }
+
+func Test_Benchmarks(t *testing.T) {
+        c, _ := TimeLinearInt(1, 10000000)
+        if c != 10998 {
+                t.Errorf("Test_Benchmarks, TimeLinearInt failed, got %d, expected 10998", c)
+        }
+        c, _ = TimeLinearStr(1, 10000000)
+        if c != 10998 {
+                t.Errorf("Test_Benchmarks, TimeLinearStr failed, got %d, expected 10998", c)
+        }
+        c, _ = TimeNextGenerator(1, 10000000)
+        if c != 10998 {
+                t.Errorf("Test_Benchmarks, TimeNextGenerator failed, got %d, expected 10998", c)
+        }
+        c, _ = TimeNextGenerator(10, 10000000)
+        if c != 10989 {
+                t.Errorf("Test_Benchmarks, TimeNextGenerator failed, got %d, expected 10989", c)
+        }
+        c, _ = TimePrevGenerator(1, 10000000)
+        if c != 10998 {
+                t.Errorf("Test_Benchmarks, TimePrevGenerator failed, got %d, expected 10998", c)
+        }
+}
+

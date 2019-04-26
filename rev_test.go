@@ -8,6 +8,10 @@ import (
 )
 
 func Test_ReverseDigits(t *testing.T) {
+        r := ReverseDigits(-123, 3)
+        if r != -321 {
+                t.Error(fmt.Sprintf("ReverseDigits error on negative number, %d %d", -123, r))
+        }
 	for i := 1; i <= 9; i++ {
 		r := ReverseDigits(i, 1)
 

@@ -23,6 +23,6 @@ func IsPalindromeString(n int) bool {
 		e--
 	}
 
-	// The all matched
+	// They all matched
 	return true
 }

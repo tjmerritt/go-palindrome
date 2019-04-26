@@ -81,7 +81,7 @@ func Next(n int) int {
 	l, m, r, x, c := Split(n)
 
 	// If the right half is greater than or equal to the reverse of left
-	// then the next palindrome has a left side this is one greater
+	// then the next palindrome has a left side that is one greater
 	if ReverseDigits(r, c) >= ReverseDigits(l, c) {
 		if m >= 0 {
 			// We have a middle digit, so increment it
